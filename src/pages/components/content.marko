@@ -1,11 +1,13 @@
 <!-- For more documentation on adding state see: https://markojs.com/docs/getting-started/#adding-state -->
-
 import seedData from '../../seed.json';
+import sidebar from './sidebar';
 
 class {
   onCreate() {
-    this.state = {previewSeedData: false};
+    this.state = {previewSeedData: true};
+
   }
+  
 
   onPreviewSeedData() {
     this.state.previewSeedData = !this.state.previewSeedData;
@@ -23,24 +25,38 @@ style {
     min-height: 100vh;
     width: 100%;
   }
-  img.logo {
-    width: 400px;
+  
+  h1 {
+    color: purple;
+    margin-top: 30px;
   }
 }
 
 <div class="container">
-  <header>
-    <img.logo src="../../assets/gotab-logo.svg" alt="GoTab"/>
-  </header>
+  <sidebar />
   <main class="col-12">
-    <h1 class="fw-lighter text-center pt-3">Edit <code class="text-primary">./pages/components/content.marko</code> and save to reload.</h1>
     <div class="w-100 d-flex flex-column justify-content-center align-items-center">
+    <h1>The current count is ${state.previewSeedData}</h1>
+    <div>
+  
+    </div>
+    <dl>
+      <for|tabs| of=seedData.tabs>
+          <!-- only the first tag needs a key -->
+          <dt key=tabs.id>${tabs.name}</dt>
+          <!-- This key can be omitted -->
+          <dd>${tabs.subtotal}</dd>
+      </for>
+    </dl>
       <if(state.previewSeedData)>
         $ {
           const numberOfTabs = seedData.tabs.length;
+          const tabsName = seedData.tabs.name;
           console.log(`There are ${numberOfTabs} tabs in this dataset:\n`, seedData);
         }
-        <p class="p-3 m-3 border rounded">Open your developer tools to see the data in the console.</p>
+
+       <h1>The current count is ${seedData.tabs}</h1>
+       
       </if>
       <else>
         <button on-click('onPreviewSeedData') class="btn btn-outline-primary">View Dataset</button>
