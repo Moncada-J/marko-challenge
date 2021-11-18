@@ -1,5 +1,6 @@
 {
   "name": "marko-challenge",
+   "homepage": "http://moncada-j.github.io/marko-challenge/",
   "description": "GoTab Code Challenge with Marko",
   "version": "1.0.0",
   "repository": {
@@ -27,6 +28,8 @@
   "scripts": {
     "build": "marko-build ./src/pages",
     "dev": "marko-serve ./src/pages",
-    "start": "NODE_ENV=production node ./build/index.js"
+    "start": "NODE_ENV=production node ./build/index.js",
+    "predeploy": "npm run build", 
+    "deploy": "gh-pages -d build"
   }
 }
