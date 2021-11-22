@@ -4,8 +4,7 @@
   "description": "GoTab Code Challenge with Marko",
   "version": "1.0.0",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/GoTab-Inc/interview-assessment"
+    "type": "git"
   },
   "author": "dannguyen",
   "license": "ISC",
@@ -28,8 +27,6 @@
   "scripts": {
     "build": "marko-build ./src/pages",
     "dev": "marko-serve ./src/pages",
-    "start": "NODE_ENV=production node ./build/index.js",
-    "predeploy": "npm run build", 
-    "deploy": "gh-pages -d build"
+    "start": "NODE_ENV=production node ./build/index.js"
   }
 }

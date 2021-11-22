@@ -1,18 +1,25 @@
 <!-- For more documentation on adding state see: https://markojs.com/docs/getting-started/#adding-state -->
 import seedData from '../../seed.json';
 import sidebar from './sidebar';
+import cards from './cards';
+import dataTable from './dataTable';
 
 class {
   onCreate() {
     this.state = {previewSeedData: true};
-
   }
   
-
   onPreviewSeedData() {
     this.state.previewSeedData = !this.state.previewSeedData;
   }
 }
+
+<script>
+// vanilla js for bootstrap 4 table (search/pagination functionality) 
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
 
 style {
   .container {
@@ -25,111 +32,20 @@ style {
     min-height: 100vh;
     width: 100%;
   }
-  
-  h1 {
-    color: purple;
-    margin-top: 30px;
-  }
   .card {
     color: whitesmoke !important;
     border: 2px solid #ed630e !important;
     background: #363835;
+    margin-top: 15px;
   }
 }
 
 <div class="container">
   <sidebar />
   <main class="col-12">
-    <div class="w-100 d-flex flex-column justify-content-center align-items-center">
-      <if(state.previewSeedData)>
-        $ {
-
-          const dollars = seedData.tabs['subtotal'];
-          console.log(dollars)
-          //  function that converts monetary values to cents and adds dollar sign! /
-            function toCents (int) {
-              return '$' + (int/100).toFixed(2)
-            };
-            
-          // function for calculating the gross total: //
-          let grossTotal = seedData.tabs.reduce(function(prev, curr) {
-            return prev + (curr.total + curr.tip);
-          toCents();
-          }, 0)
-          console.log('Overall Gross Total:', grossTotal)
-        // function for calculating the net cost: //
-            let netTotal = seedData.tabs.reduce(function(prev, curr) {
-              return prev + curr.total;
-            }, 0);
-            console.log('Current Net Total:', netTotal);
-
-        // function for calculating autogratuity >
-            let feesTotal = seedData.tabs.reduce(function(prev, curr) {
-              return prev + curr.autogratuity;
-            }, 0)
-            console.log('Current Autogratuity:', feesTotal)
-
-        // a  combined total function for tips and tax //
-            let tipsTaxTotal = seedData.tabs.reduce(function(prev, curr) {
-              return prev + (curr.tip + curr.tax);
-            }, 0)
-              console.log('Tips and Taxes:', tipsTaxTotal);
-        
-          }
-             
-       <div class="card-group" style="margin-left: 130px; text-align: center">
-            <div class="card" style="margin-left: 35px; margin-top: 10px; width: 20 rem;">
-              <div class="card-body">
-                <h5 class="card-title">Gross Sales</h5>
-                <h4 class="card-text" style="font-weight: 600;">${grossTotal}</h4>
-                <span><strong>Taxes/Tips</strong>: ${tipsTaxTotal}</span>
-              </div>
-            </div>
-            <div class="card" style="margin-left: 35px; margin-top: 10px; width: 20rem;">
-              <div class="card-body">
-                <h5 class="card-title">Net Sales</h5>
-                <h4 class="card-text" style="font-weight: 600;">${netTotal}</h4>
-                <span>(Tips not included in total)</span>
-              </div>
-            </div>
-            <div class="card" style="margin-left: 35px; margin-top: 10px; width: 20rem;">
-              <div class="card-body">
-                <h5 class="card-title">Autogratuity</h5>
-                <h4 class="card-text" style="font-weight: 600;">${feesTotal}</h4>
-                <span>(Establishment fees included)</span>
-              </div>
-            </div>
-       </div>
-      </if>
-      <else>
-        <button on-click('onPreviewSeedData') class="btn btn-outline-primary">No Sales</button>
-      </else>
-    <dl>
-    <table class="table">
-      <thead class="thead-dark">
-              <tr>
-                <th scope="col"> Product ID</th>
-                <th scope="col">Listed Name</th>
-                <th scope="col">Price (USD)</th>
-                <th scope="col">Quantity</th>
-              </tr>
-            </thead>
-            <tbody>
-          <for|tabs| of=seedData.tabs>
-            <for|items| of=tabs.items>
-              <tr>
-                <td key=tabs.id>${items.id}</td>
-                <td>${items.name}</td>
-                <td>${items.price}</td>
-                <td>${items.quantity}</td>
-              </tr>
-        
-        </for>
-        </for>
-        </tbody>
-      </table>
-      </dl>
-
+    <div class="w-100 d-flex flex-column justify-content-center align-items-center">       
+       <cards />
+      <dataTable />
     </div>
   </main>
 </div>
