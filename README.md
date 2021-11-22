@@ -1,5 +1,23 @@
 # GoTab Coding Assessment
 
+## Technologies Used
+
+Marko.js, JavaScript, CSS, Bootstrap 
+
+## Future Enhancements 
+* Full Stack/Back End integrations (server-side routing, server and database connection, etc)
+*  Light Mode/Dark Mode toggle for a better UI
+*  "Export" option for a user to export the shown data in pdf or excel format
+*  Report generation (on a different page/part of routing), breaking down net and gross, on a quarterly and yearly basis
+*  A more developed dashboard set up with figures, graphs, charts for rendered data
+
+## Approx. Time Spent
+1-2 days
+
+## Made with 💜 by Jessalynn Moncada
+
+---
+## Instructions
 Develop a responsive web app that displays sales data (the target audience would be restaurant/bar/venue managers, operators, servers, etc.).
 You are free to style it however you want and display the data in any way you want but you must meet at least one of the following requirements:
 
