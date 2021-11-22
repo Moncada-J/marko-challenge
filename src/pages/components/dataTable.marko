@@ -1,0 +1,84 @@
+import seedData from '../../seed.json';
+
+
+<script>
+// vanilla js for bootstrap 4 table (search/pagination functionality) 
+    $(document).ready(function () {
+    $('#productData').DataTable();
+    $('.dataTables_length').addClass('bs-select');
+    });
+</script>
+
+style {
+    input {
+        width: 300px !important;
+        padding: 10px !important;
+        border-radius: 5px;
+    }
+
+    .table-container {
+        margin-top: 5vh;
+        margin-left: 150px;
+    }
+    input {
+        margin-bottom: 15px;
+        width: 280px !important;
+    }
+    th {
+        font-weight: 800;
+    }
+   tbody > tr:hover{
+        background-color: rgb(237, 131, 26) !important;
+    }
+.table {
+    border-color: black !important;
+    background-color: rgb(54, 55, 53);
+    color: whitesmoke;
+    text-align: center;
+    border-color: #6a6d67 !important;
+}
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #ff6f12;
+    border-color: #dee2e6;
+}
+.page-link {
+    position: relative;
+    display: block;
+    color: white;
+    text-decoration: none;
+    background-color: rgb(54, 55, 53);
+    border: 1px solid #dee2e6;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.page-link:hover {
+    color: rgb(255, 111, 18);
+}
+}
+<div class="table-container">
+<table class="table table table-bordered table-hover" cellspacing="0" width="100%"
+     id="productData" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th class="col-md-2"> Product ID</th>
+            <th class="col-md-2">Listed Name</th>
+            <th class="col-md-2">Price (USD)</th>
+            <th class="col-md-2">Quantity</th>
+        </tr>
+     </thead>
+     <tbody>
+        <for|tabs| of=seedData.tabs>
+          <for|items| of=tabs.items>
+              <tr>
+                <td key=tabs.id>${items.id}</td>
+                <td>${items.name}</td>
+                <!-- renders price data in decimal format (to the 100th place) -->
+                 <td>$${(items.price/100).toFixed(2)}</td>
+                <td>${items.quantity}</td>
+              </tr>      
+            </for>
+          </for>
+    </tbody>
+</table> 
+</div>

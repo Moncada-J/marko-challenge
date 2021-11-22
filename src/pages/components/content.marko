@@ -1,18 +1,25 @@
 <!-- For more documentation on adding state see: https://markojs.com/docs/getting-started/#adding-state -->
 import seedData from '../../seed.json';
 import sidebar from './sidebar';
+import cards from './cards';
+import dataTable from './dataTable';
 
 class {
   onCreate() {
     this.state = {previewSeedData: true};
-
   }
   
-
   onPreviewSeedData() {
     this.state.previewSeedData = !this.state.previewSeedData;
   }
 }
+
+<script>
+// vanilla js for bootstrap 4 table (search/pagination functionality) 
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
 
 style {
   .container {
@@ -25,60 +32,20 @@ style {
     min-height: 100vh;
     width: 100%;
   }
-  
-  h1 {
-    color: purple;
-    margin-top: 30px;
+  .card {
+    color: whitesmoke !important;
+    border: 2px solid #ed630e !important;
+    background: #363835;
+    margin-top: 15px;
   }
-  
 }
 
 <div class="container">
   <sidebar />
   <main class="col-12">
-    <div class="w-100 d-flex flex-column justify-content-center align-items-center">
-      <if(state.previewSeedData)>
-        $ {
-        
-            let netTotal = seedData.tabs.reduce(function(acc, tab) {
-              return acc + tab.total;
-            }, 0);
-            console.log('Current Net Total:', netTotal);
-          }
-             
-       <div class="card-group" style="margin-left: 130px; text-align: center">
-            <div class="card" style="margin-right: 25px; margin-top: 35px; width: 20 rem;">
-              <div class="card-body">
-                <h6 class="card-title">Gross Sales</h6>
-                <h4 class="card-text" style="font-weight: 600;">some data</h4>
-              </div>
-            </div>
-            <div class="card" style="margin-right: 25px; margin-top: 35px; width: 20rem;">
-              <div class="card-body">
-                <h6 class="card-title">Net Sales</h6>
-                <h4 class="card-text" style="font-weight: 600;">$${netTotal}</h4>
-              </div>
-            </div>
-            <div class="card" style="margin-right: 25px; margin-top: 35px; width: 20rem;">
-              <div class="card-body">
-                <h6 class="card-title">Autogratuity</h6>
-                <h4 class="card-text" style="font-weight: 600;">some data</h4>
-              </div>
-            </div>
-       </div>
-      </if>
-      <else>
-        <button on-click('onPreviewSeedData') class="btn btn-outline-primary">No Sales</button>
-      </else>
-      <dl>
-        <for|tabs| of=seedData.tabs>
-            <!-- only the first tag needs a key -->
-            <dt key=tabs.id>${tabs.name}</dt>
-            <!-- This key can be omitted -->
-            <dd>${tabs.subtotal}</dd>
-        </for>
-      </dl>
-
+    <div class="w-100 d-flex flex-column justify-content-center align-items-center">       
+       <cards />
+      <dataTable />
     </div>
   </main>
 </div>
