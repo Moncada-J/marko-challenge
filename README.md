@@ -4,6 +4,14 @@
 
 Marko.js, JavaScript, CSS, Bootstrap 
 
+## Application Features
+
+- A clean and user friendly UI with GoTab's complimentary color scheme
+- Cards displaying gross, net and autogratuity total figures
+- Monetary values have been converted to the appropriate decimal/cent format to display figures more accurately 
+- A sortable and searchable data table that tracks product inventory and sales
+- Responsive and flexible design that is friendly on all devices including: Desktops, Mobile Phones and Ipads/Tablets.
+
 ## Future Enhancements 
 * Full Stack/Back End integrations (server-side routing, server and database connection, etc)
 *  Light Mode/Dark Mode toggle for a better UI
